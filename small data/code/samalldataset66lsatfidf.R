@@ -50,7 +50,7 @@ apply(TF.IDF,2,sum)
 TF.IDF.svd <- svd(TF.IDF)
 end <- rankMatrix(TF.IDF)
 end
-#Equation (6)
+#Equation (7)
 round(TF.IDF.svd$u,3)
 round(TF.IDF.svd$d,3)
 round(TF.IDF.svd$v,3)
