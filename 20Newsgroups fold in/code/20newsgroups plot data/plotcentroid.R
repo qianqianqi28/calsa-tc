@@ -46,23 +46,23 @@ dev.off()
 
 
 #Not used.
-dimdefi <- 10
-setEPS()
-postscript("C:\\Users\\qi000005\\OneDrive - Universiteit Utrecht\\qi000005\\paper 1\\20220417 Review 2 archive\\20Newsgroups fold in\\figure\\20Newsgroups plot data\\F20Newsgroupsfoldincentroidpartdimension.eps")
-par(mar=c(5,6,4,1)+.1)
-plot(1:(dimdefi),caprecionrecall[1:dimdefi],col=1,type="b",ylim = c(0,1),
-     lty=1,main = "20 Newsgroups (centroid method)", xlab = "Number of dimension", ylab = "Accuracy", lwd=1.8,cex.lab=1.75, cex.axis = 1.55, cex.main=1.75)
-lines(1:dimdefi,rawlsaprecionrecall[1:dimdefi],col=2,type="b",lty=1, lwd=1.8)
-lines(1:dimdefi,nrowl1lsaprecionrecall[1:dimdefi],col=3,type="b",lty=1, lwd=1.8)
-lines(1:dimdefi,nrowl2lsaprecionrecall[1:dimdefi],col=4,type="b",lty=1, lwd=1.8)
-lines(1:dimdefi,tfidflsaprecionrecall[1:dimdefi],col=5,type="b",lty=1, lwd=1.8)
-lines(1:dimdefi,rawprecionrecallx[1:dimdefi],col=6,type="b",lty=1, lwd=1.8)
-
-
-#title("centroid method",lwd=3)
-
-legend("bottomright",cex=1,c("CA","LSA-RAW","LSA-NROWL1","LSA-NROWL2","LSA-TFIDF",
-                             "RAW"),col=c(1,2,3,4,5,6),lty=c(1,1,1,1,1,1),pch=c(1,1,1,1,1,1))
-
-dev.off()
+# dimdefi <- 10
+# setEPS()
+# postscript("C:\\Users\\qi000005\\OneDrive - Universiteit Utrecht\\qi000005\\paper 1\\20220417 Review 2 archive\\20Newsgroups fold in\\figure\\20Newsgroups plot data\\F20Newsgroupsfoldincentroidpartdimension.eps")
+# par(mar=c(5,6,4,1)+.1)
+# plot(1:(dimdefi),caprecionrecall[1:dimdefi],col=1,type="b",ylim = c(0,1),
+#      lty=1,main = "20 Newsgroups (centroid method)", xlab = "Number of dimension", ylab = "Accuracy", lwd=1.8,cex.lab=1.75, cex.axis = 1.55, cex.main=1.75)
+# lines(1:dimdefi,rawlsaprecionrecall[1:dimdefi],col=2,type="b",lty=1, lwd=1.8)
+# lines(1:dimdefi,nrowl1lsaprecionrecall[1:dimdefi],col=3,type="b",lty=1, lwd=1.8)
+# lines(1:dimdefi,nrowl2lsaprecionrecall[1:dimdefi],col=4,type="b",lty=1, lwd=1.8)
+# lines(1:dimdefi,tfidflsaprecionrecall[1:dimdefi],col=5,type="b",lty=1, lwd=1.8)
+# lines(1:dimdefi,rawprecionrecallx[1:dimdefi],col=6,type="b",lty=1, lwd=1.8)
+# 
+# 
+# #title("centroid method",lwd=3)
+# 
+# legend("bottomright",cex=1,c("CA","LSA-RAW","LSA-NROWL1","LSA-NROWL2","LSA-TFIDF",
+#                              "RAW"),col=c(1,2,3,4,5,6),lty=c(1,1,1,1,1,1),pch=c(1,1,1,1,1,1))
+# 
+# dev.off()
 
