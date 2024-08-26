@@ -29,12 +29,8 @@ sum(DT.P)
 
 ### Row and column masses
 DT.r    <- apply(DT.P, 1, sum)
-
-#The matrix P of joint observed proportions
 round(DT.r,3)
 DT.c    <- apply(DT.P, 2, sum)
-
-#The matrix P of joint observed proportions
 round(DT.c,3)
 
 ### CA Step 1: the matrix S
