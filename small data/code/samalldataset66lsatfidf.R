@@ -40,7 +40,7 @@ round(IDF,2)
 
 #TF-IDF matrix
 
-#Table 8: A document-term matrix F^TF-IDF
+#Table 5: A document-term matrix F^TF-IDF
 TF.IDF <- TF %*% IDF
 rownames(TF.IDF) <- row.name
 colnames(TF.IDF) <- col.name
@@ -55,14 +55,14 @@ round(TF.IDF.svd$u,3)
 round(TF.IDF.svd$d,3)
 round(TF.IDF.svd$v,3)
 
-#Table 9: The singular value, the squares of singular values, and the proportion of explained total sum of squared singular values (PSSSV) for each dimension of LSA of F^TF-IDF.
+#Table 2: The singular value, the squares of singular values, and the proportion of explained total sum of squared singular values (PSSSV) for each dimension of LSA of F^TF-IDF.
 round(TF.IDF.svd$d,3)
 round(TF.IDF.svd$d^2,3);round((TF.IDF.svd$d[1:end]^2/sum(TF.IDF.svd$d[1:end]^2)),3)
 QQUSE<-TF.IDF.svd$d[1:end]^2/sum(TF.IDF.svd$d[1:end]^2)
 round(QQUSE[1]+QQUSE[2],3)
 
 
-#Figure 3: A two-dimensional plot of documents and terms for matrix F^TF-IDF.
+#Figure 1: A two-dimensional plot of documents and terms for matrix F^TF-IDF.
 
 UD <- TF.IDF.svd$u %*% diag(TF.IDF.svd$d)
 VD <- TF.IDF.svd$v %*% diag(TF.IDF.svd$d)
