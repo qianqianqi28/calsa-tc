@@ -22,7 +22,7 @@ sum(apply(DT, 2, sum))
 
 ### Correspondence matrix
 
-#Table 2: The matrix P of joint observed proportions
+#The matrix P of joint observed proportions
 DT.P    <- DT/sum(DT)
 round(DT.P, 3)
 sum(DT.P)
@@ -30,11 +30,11 @@ sum(DT.P)
 ### Row and column masses
 DT.r    <- apply(DT.P, 1, sum)
 
-#Table 2: The matrix P of joint observed proportions
+#The matrix P of joint observed proportions
 round(DT.r,3)
 DT.c    <- apply(DT.P, 2, sum)
 
-#Table 2: The matrix P of joint observed proportions
+#The matrix P of joint observed proportions
 round(DT.c,3)
 
 ### CA Step 1: the matrix S
@@ -44,14 +44,14 @@ DT.Drmh <- diag(1/sqrt(DT.r))
 DT.Dcmh <- diag(1/sqrt(DT.c))
 DT.P   <- as.matrix(DT.P)
 
-#Table 4: Row profiles of F
+#Row profiles of F
 round(diag(1/DT.r) %*% DT.P,3) 
 apply(diag(1/DT.r) %*% DT.P, 1, sum)
 
-#Table 3: The matrix E of expected proportions under independence
+#The matrix E of expected proportions under independence
 round(DT.r%o%DT.c, 3)
 
-#Table 10: The matrix of standardized residuals
+#The matrix of standardized residuals
 DT.S   <- DT.Drmh%*%(DT.P-DT.r%o%DT.c)%*%DT.Dcmh
 round(DT.S,3)
 end <- rankMatrix(DT.S)
@@ -72,7 +72,7 @@ round(DT.svd$u,3)
 round(DT.svd$d,3)
 round(DT.svd$v,3)
 
-#Table 11: The singular values, the inertia, and the proportions of explained total inertia for each dimension of CA.
+#The singular values, the inertia, and the proportions of explained total inertia for each dimension of CA.
 round(DT.svd$d,3)
 round(DT.svd$d^2,3);round(DT.svd$d[1:end]^2/sum(DT.svd$d[1:end]^2),3)
 inertia.square <- DT.svd$d[1:end]^2
@@ -80,7 +80,7 @@ inertia.two <- sum(inertia.square[1:2])/sum(inertia.square)
 inertia.two
 
 
-#Figure 4: Symmetric map of the data of Table 1.
+#Figure 2: Symmetric map of the data of Table 1.
 x.min <- min(min(DT.rpc[,1]),min(DT.cpc[,1]))
 y.min <- min(min(DT.rpc[,2]),min(DT.cpc[,2]))
 x.max <- max(max(DT.rpc[,1]),max(DT.cpc[,1]))
@@ -153,7 +153,7 @@ dev.off()
 
 
 
-#Figure 5: Asymmetric map of the data of Table 1.
+#Figure 2: Asymmetric map of the data of Table 1.
 x.min <- min(min(DT.rpc[,1]),min(DT.csc[,1]))
 y.min <- min(min(DT.rpc[,2]),min(DT.csc[,2]))
 x.max <- max(max(DT.rpc[,1]),max(DT.csc[,1]))
