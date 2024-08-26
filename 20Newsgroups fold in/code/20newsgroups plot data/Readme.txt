@@ -1,0 +1,1 @@
+file "plotcentroid.R" is for Figure 6(c) and the figure is stored in the "figure\20Newsgroups plot data" folder.
