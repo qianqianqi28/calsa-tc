@@ -61,14 +61,13 @@ DT.csc <- DT.Dcmh%*%DT.svd$v
 ### CA Steps 5 & 6:principal row and column coordinates
 DT.rpc <- DT.rsc%*%diag(DT.svd$d)
 DT.cpc <- DT.csc%*%diag(DT.svd$d)
-### CA Step 7: principal inertias (eigenvalues) and %s
 
-#Equation (16)
+#Equation (17)
 round(DT.svd$u,3)
 round(DT.svd$d,3)
 round(DT.svd$v,3)
 
-#The singular values, the inertia, and the proportions of explained total inertia for each dimension of CA.
+#Table 7: The singular values, the inertia, and the proportions of explained total inertia for each dimension of CA.
 round(DT.svd$d,3)
 round(DT.svd$d^2,3);round(DT.svd$d[1:end]^2/sum(DT.svd$d[1:end]^2),3)
 inertia.square <- DT.svd$d[1:end]^2
