@@ -23,7 +23,7 @@ round(apply(X.count.N,2,sum),3)
 X.svd.N <- svd(X.count.N)
 end <- rankMatrix(X.count.N)
 end
-#Equation (5)
+#Equation (6)
 round(X.svd.N$u,3)
 round(X.svd.N$d,3)
 round(X.svd.N$v,3)
