@@ -23,7 +23,7 @@ round(X.svd$u,3)
 round(X.svd$d,3)
 round(X.svd$v,3)
 
-#Table 5: The singular values, the squares of singular values, and the proportion of explained total sum of squared singular values (PSSSV) for each dimension of LSA of F.
+#Table 2: The singular values, the squares of singular values, and the proportion of explained total sum of squared singular values (PSSSV) for each dimension of LSA of F.
 round(X.svd$d,3)
 round(X.svd$d^2,3)
 round(X.svd$d[1:end]^2/sum(X.svd$d[1:end]^2),3)
