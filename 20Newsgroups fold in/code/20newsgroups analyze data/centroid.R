@@ -35,7 +35,7 @@ t(which(caprecionrecall[1:dimdefi]>as.numeric(tfidflsaprecionrecall[1:dimdefi]),
 
 
 
-#Table 12: The optimal dimensionality k and the accuracy in k for LSARAW, LSANROW, LSATFIDF, and CA, and the accuracy for RAW using different distance measurement methods.
+#The optimal dimensionality k and the accuracy in k for LSARAW, LSANROWL1, LSANROWL2, LSATFIDF, and CA, and the accuracy for RAW using different distance measurement methods.
 round(rawprecionrecall[1],3)
 
 t(which(rawlsaprecionrecall==as.numeric(rawlsaprecionrecall[which.max(rawlsaprecionrecall)]),arr.ind=T))
