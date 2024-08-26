@@ -12,7 +12,7 @@ colnames(X) <- c("lion","tiger","cheetah","jaguar","porsche","ferrari")
 X.count <- X
 X.count
 
-#Table 6: A document-term matrix F^N
+#Table 4: A document-term matrix F^N
 X.count.N <- X.count/matrix(rep(sqrt(apply(X.count^2,1,sum)),each = nrow(X.count)), ncol = ncol(X.count), by = TRUE)
 round(X.count.N,3)
 apply(X.count.N^2,1,sum)
@@ -28,7 +28,7 @@ round(X.svd.N$u,3)
 round(X.svd.N$d,3)
 round(X.svd.N$v,3)
 
-#Table 7: The singular value, the squares of singular values, and the proportion of explained total sum of squared singular values (PSSSV) for each dimension of LSA of F^N.
+#Table 2: The singular value, the squares of singular values, and the proportion of explained total sum of squared singular values (PSSSV) for each dimension of LSA of F^N.
 round(X.svd.N$d,3)
 round(X.svd.N$d^2,3);round(X.svd.N$d[1:end]^2/sum(X.svd.N$d[1:end]^2),3)
 qqpercentage <- X.svd.N$d[1:end]^2/sum(X.svd.N$d[1:end]^2)
@@ -39,7 +39,7 @@ round(qqpercentage[1]+qqpercentage[2],3)
 UD.N = X.svd.N$u%*%diag(X.svd.N$d)
 VD.N <- X.svd.N$v%*%diag(X.svd.N$d)
 
-#Figure 2: A two-dimensional plot of documents and terms for row-normalized data F^N.
+#Figure 1: A two-dimensional plot of documents and terms for row-normalized data F^N.
 dev.off()
 x.min <- min(min(UD.N[,1]),min(VD.N[,1]))
 y.min <- min(min(UD.N[,2]),min(VD.N[,2]))
