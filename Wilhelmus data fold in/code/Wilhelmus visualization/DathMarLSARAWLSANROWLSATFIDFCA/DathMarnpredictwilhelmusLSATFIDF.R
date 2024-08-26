@@ -1,0 +1,89 @@
+#For Figure 7 of section 6.2 of the first paper: this code is about LSA-TFIDF.
+
+rm(list=ls())
+library(caret)
+library(e1071)
+library(stringr)
+library(tm)
+library("readxl")
+library("superml")
+library("udpipe")
+library("data.table")
+library(Matrix)
+
+load("C:\\Users\\qi000005\\OneDrive - Universiteit Utrecht\\qi000005\\paper 1\\20220417 Review 2 archive\\Wilhelmus data fold in\\figure\\Wilhelmus visualization\\DathMarLSARAWLSANROWLSATFIDFCA\\rawmatrixdathmarn.Rdata")
+
+#TF matrix
+TF <- as.matrix(training_dtm) 
+
+
+#IDF matrix
+pre.IDF <- training_dtm
+pre.IDF[pre.IDF > 0.5] <- 1
+#pre.IDF
+IDF <- log(nrow(pre.IDF)/colSums(pre.IDF),base = 2)
+
+#plus 1
+IDF <- IDF +1
+
+IDF <- diag(IDF)
+
+
+#TF-IDF matrix
+
+TF.IDF <- TF %*% IDF
+
+
+
+testing_dtm_nrow <- testing_dtm %*% IDF
+
+dim(testing_dtm_nrow)
+
+
+td.mat_mfi_choose.total.svd <- svd(TF.IDF)
+
+
+
+dimdefi <- rankMatrix(TF.IDF)
+
+k <- 2
+
+Variance <- 100*td.mat_mfi_choose.total.svd$d[1:dimdefi]^2/sum(td.mat_mfi_choose.total.svd$d[1:dimdefi]^2)
+round((td.mat_mfi_choose.total.svd$d^2)[1:k],3)
+round(Variance[1:k],1)
+Variance.firstk.dimensions <- sum(Variance[1:k])
+round(Variance.firstk.dimensions,1)
+
+td.mat_mfi_choose.total.svd.ud <- as.matrix(td.mat_mfi_choose.total.svd$u[,1:k])%*%as.matrix(diag(td.mat_mfi_choose.total.svd$d[1:k]))
+
+test_new_matrix.svd.ud <- t(as.matrix((as.matrix(testing_dtm_nrow) %*% as.matrix(td.mat_mfi_choose.total.svd$v))[,1:k]))
+
+
+
+
+x.min.udvd <- min(td.mat_mfi_choose.total.svd.ud[,1])
+y.min.udvd <- min(td.mat_mfi_choose.total.svd.ud[,2])
+x.max.udvd <- max(td.mat_mfi_choose.total.svd.ud[,1])
+y.max.udvd <- max(td.mat_mfi_choose.total.svd.ud[,2])
+xlim<-c(-max(abs(x.min.udvd),abs(x.max.udvd)),max(abs(x.min.udvd),abs(x.max.udvd)))
+xlim
+ylim<-c(-max(abs(y.min.udvd),abs(y.max.udvd)),max(abs(y.min.udvd),abs(y.max.udvd)))
+ylim
+max.total <- max(xlim[2],ylim[2])*1.1
+
+
+
+dev.off()
+setEPS()
+postscript("C:\\Users\\qi000005\\OneDrive - Universiteit Utrecht\\qi000005\\paper 1\\20220417 Review 2 archive\\Wilhelmus data fold in\\figure\\Wilhelmus visualization\\DathMarLSARAWLSANROWLSATFIDFCA\\FfoldinDathMarnpredictwilhelmusLSATFIDF.eps")
+par(mar=c(5,6,4,1)+.1)
+plot(td.mat_mfi_choose.total.svd.ud[1:length(author_datheen.vector),1], td.mat_mfi_choose.total.svd.ud[1:length(author_datheen.vector),2], asp = 1, col = "black", cex = 1.8, type = "p", pch = 1, xlim = c(x.min.udvd,x.max.udvd), ylim = c(y.min.udvd,y.max.udvd), 
+     main = "LSA-TFIDF",
+     xlab = "Dimension 1: 284,093.310 (53.8%)", ylab = "Dimension 2: 59,440.240 (11.2%)",cex.lab=1.75, cex.axis = 1.55, cex.main=1.75)
+points(td.mat_mfi_choose.total.svd.ud[(length(author_datheen.vector)+1):(length(author_datheen.vector)+length(author_marnix.vector)),1], td.mat_mfi_choose.total.svd.ud[(length(author_datheen.vector)+1):(length(author_datheen.vector)+length(author_marnix.vector)),2], col = "blue", type = "p", pch = 3, cex = 1.8)
+
+points(test_new_matrix.svd.ud[1,1], test_new_matrix.svd.ud[1,2], col = "red", type = "p", pch = 20, cex = 1.8)
+text(test_new_matrix.svd.ud[1,1], test_new_matrix.svd.ud[1,2],label = "W",col = "red", cex = 1.75)
+
+legend("topright", cex = 1.75,c("Datheen","Marnix"),col=c("black","blue"),pch = c(1, 3))
+dev.off()
